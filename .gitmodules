@@ -1,0 +1,24 @@
+[submodule "references/OpenGL-Registry"]
+	path = references/OpenGL-Registry
+	url = https://github.com/KhronosGroup/OpenGL-Registry.git
+	branch = main
+[submodule "references/OpenGL-Refpages"]
+	path = references/OpenGL-Refpages
+	url = https://github.com/KhronosGroup/OpenGL-Refpages.git
+	branch = main
+[submodule "references/GLSL"]
+	path = references/GLSL
+	url = https://github.com/KhronosGroup/GLSL.git
+	branch = main
+[submodule "references/VK-GL-CTS"]
+	path = references/VK-GL-CTS
+	url = https://github.com/KhronosGroup/VK-GL-CTS.git
+	branch = main
+[submodule "references/OpenGL-Tutorials"]
+	path = references/OpenGL-Tutorials
+	url = https://github.com/opengl-tutorials/ogl.git
+	branch = master
+[submodule "references/Mesa"]
+	path = references/Mesa
+	url = https://gitlab.freedesktop.org/mesa/mesa.git
+	branch = main

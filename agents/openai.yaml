@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenGL"
+  short_description: "Local OpenGL specifications, tests, and source"
+  default_prompt: "Use $opengl to answer this OpenGL question from the local specifications and tests."
