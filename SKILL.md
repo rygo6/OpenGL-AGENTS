@@ -1,19 +1,19 @@
 ---
 name: opengl
-description: Answer questions and help implement, debug, optimize, or test OpenGL and OpenGL ES by referencing local Khronos specifications, registries, reference pages, GLSL sources, conformance tests, tutorials, and Mesa source. Use for GL/GLES APIs, contexts, buffers, textures, framebuffers, shaders, pipelines, synchronization, extensions, platform bindings, driver behavior, and GL conformance. Always consult the local repos before answering.
+description: Use local Khronos specifications, conformance tests, and driver source to answer questions and develop, debug, or test native OpenGL and OpenGL ES code. Use for GL/GLES APIs, GLSL, extensions, context and rendering state, or driver behavior. Use webgl for the browser API.
 ---
 
 # OpenGL Local Reference Skill
 
-Always consult the relevant repositories in this skill's `references/` folder:
+Search the relevant local sources before answering technical questions. Paths below are relative to this skill directory; read only the sources needed for the request.
 
 ```text
-references/OpenGL-Registry/   ← Khronos GL/GLES specs, headers, extensions, and XML registry
-references/OpenGL-Refpages/   ← Khronos command and GLSL function reference pages
-references/GLSL/              ← GLSL specification source and extension sources
-references/VK-GL-CTS/         ← OpenGL and OpenGL ES conformance tests
-references/OpenGL-Tutorials/  ← Runnable native OpenGL examples
-references/Mesa/              ← Open-source OpenGL/GLES driver and state-tracker implementation
+references/OpenGL-Registry/         ← Khronos GL/GLES specs, headers, extensions, and XML registry
+references/OpenGL-Refpages/         ← Khronos command and GLSL function reference pages
+references/GLSL/                    ← GLSL specification source and extension sources
+references/VK-GL-CTS/               ← OpenGL and OpenGL ES conformance tests
+references/OpenGL-Tutorials/        ← Runnable native OpenGL examples
+references/Mesa/                    ← Open-source OpenGL/GLES driver and state-tracker implementation
 ```
 
 Use the separate `webgl` skill for the browser API. WebGL is based on OpenGL ES but adds browser-specific validation, security, and lifecycle rules.
@@ -51,7 +51,7 @@ Prefer Khronos specifications over refpages when precision matters. Treat tutori
 
 ## Debug implementation and rendering issues
 
-1. Reduce the problem to the smallest relevant `OpenGL-Tutorials` or CTS pattern.
+1. Start with the user's reproduction; use a matching tutorial or CTS case to isolate the failing behavior when helpful.
 2. Check context version/profile, loader declarations, object lifetime, binding state, framebuffer completeness, shader compile/link logs, and GL errors.
 3. Search CTS for the operation and expected result before declaring driver non-conformance.
 4. Search Mesa only when the active driver or conceptual implementation path makes it relevant; identify the driver and state tracker used.
@@ -66,8 +66,12 @@ Prefer Khronos specifications over refpages when precision matters. Treat tutori
 
 ## Answering strategy
 
-- Search or read local files before answering.
-- Cite repository-relative files so the evidence is reproducible.
+- Cite the source files and relevant sections used. Make local file links resolvable from the user's workspace.
 - Keep desktop GL, GLES, GLSL, platform bindings, and driver behavior distinct.
 - Do not infer hardware or driver support from registry presence; query or verify the target system when support matters.
-- If submodules are absent, run `git submodule update --init` from the skill directory before relying on memory. Do not add `--recursive`: these repos are read-only references and are never built, so nested build dependencies are pure overhead.
+
+## Reference availability and versions
+
+- Local checkouts are snapshots. Match the sources to the user's target version; verify current claims against official upstream sources when freshness matters. Do not silently update existing checkouts.
+- If a needed submodule is missing, initialize only that reference with `git submodule update --init -- references/<repo>` from this skill directory. Omit `--recursive`; nested build dependencies are unnecessary for source lookup.
+- If a source remains unavailable, state the limitation and use an official upstream source when accessible. Do not present an unverified recollection as a source-backed conclusion.
